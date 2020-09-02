@@ -1,0 +1,119 @@
+<!doctype html> 
+    
+    <html lang="en">
+        
+        <head> <!-- Required meta tags --> 
+            
+            <meta charset="utf-8"> 
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+            
+            <!-- Bootstrap CSS --> 
+          
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+            <style>
+                body{
+background: black;}
+
+#formControlRange{
+width:100%;}
+            </style>
+            <title>Text-n-Speech</title>
+            
+        </head> <body class="text-white"> 
+            <div class="container text-center">
+              <img src="logo.png" class="img-fluid w-50" alt="Responsive image" >
+                <h1 class="display-5">Text-<span class="text-primary">n</span>-Speech</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                       <form>
+                           <div class="form-group">
+                           <textarea  class="form-control" id="input-text" placeholder="Type anything....."></textarea>
+                           </div>
+                           <div class="form-group">
+                           <label for="rate">Rate</label>
+                               <div id="rate-value" class="badge badge-primary float-right">1</div>
+                               <input type="range" id="rate" class="custom-range" min="0.5" max="2" value="1" step="0.1">
+                      
+                               </div>
+                           <div class="form-group">
+                            <lable for="pitch">Pitch</label>   
+                               <div class="badge badge-primary float-right" id="pitch-value">1</div>
+                               <input type="range" id="pitch" class="custom-range" min="0" max="2" value="1" step="0.1">
+                               
+                               
+                           </div>
+                           <div class="form-group">
+                               <select id="voice-select" class="form-control"></select>
+                           </div>
+                           
+                           <button id="Speak" class="btn btn-light btn-block btn-lg">Speak</button>
+
+               
+                           
+                           </form>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+            
+            
+            
+            <script>
+                const synth=window.speechSynthesis;
+                
+                const inputText=document.getElementById('input-text');
+                const pitch=document.getElementById('pitch');
+                const rate=document.getElementById('rate');
+                const voiceSelect=document.querySelector('#voice-select');
+                const pitchValue=document.getElementById('pitch').value;
+                const rateValue=document.getElementById('rate').value;
+                const pitch=document.getElementById('pitch');
+                const textForm=document.getElementById('form'); 
+                
+                
+                let voices=[];
+                
+                const getVoices=()=>{
+voices=synth.getVoices();
+
+voices.forEach((voice)=>{
+const option=document.createElement('option');
+option.textContent=voice.name + '('+voice.lang+')';
+option.setAttribute('data-lang',voice-lang);
+option.setAttribute('data-name',voice-name);
+voiceSelect.appendChild(option);
+});
+
+};
+getVoices();
+if(synth.onvoiceschange!==undefined){
+synth.onvoiceschange=getVoices;
+}
+
+
+
+
+                
+                
+                
+                
+                
+            </script>
+            
+         <!-- 
+            <img src="https://www.animatedimages.org/data/media/965/animated-audio-image-0022.gif" border="0" alt="animated-audio-image-0022" />
+           -->
+            <script src="Testeri/Text-to-speech/Tts.js"></script>
+            
+            <!-- Optional JavaScript --> <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script> 
+            
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> </body> 
+    
+    </html>
